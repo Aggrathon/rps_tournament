@@ -11,12 +11,11 @@ public class Participant : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
-    public void challengeOne(List<Participant> all, Action<int> callback)
+    public void challengeOne(List<Participant> ladder, Action<int> callback)
     {
         //TODO
-        callback(0);
+        callback(Math.Max(0, ladder.FindIndex(x => x == this) - 1));
     }
 }
