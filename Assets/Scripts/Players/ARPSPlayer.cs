@@ -25,6 +25,7 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 
 	virtual public void endMatch()
 	{
+		currentMatch.setPlayerFinished(this);
 		currentMatch = null;
 	}
 

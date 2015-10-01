@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Match {
 
@@ -9,6 +10,9 @@ public class Match {
 		Scissors = 2
 	}
 
+	public delegate void MatchEnded(Match match);
+
+
 	private IRPSPlayer player1;
 	private IRPSPlayer player2;
 
@@ -18,14 +22,25 @@ public class Match {
 	private LinkedList<RPS> player1Choices;
 	private LinkedList<RPS> player2Choices;
 
+	private MatchEnded callback;
+	private bool matchHasEnded;
 
-	public Match(IRPSPlayer player1, IRPSPlayer player2)
+	/// <summary>
+	/// This creates a match and starts it immediately
+	/// </summary>
+	/// <param name="player1"></param>
+	/// <param name="player2"></param>
+	/// <param name="callback">The function called when the match is over</param>
+	public Match(IRPSPlayer player1, IRPSPlayer player2, MatchEnded callback)
 	{
 		this.player1 = player1;
 		this.player2 = player2;
 
 		player1Choices = new LinkedList<RPS>();
 		player2Choices = new LinkedList<RPS>();
+
+		this.callback = callback;
+		matchHasEnded = false;
 
 		newRound();
 	}
@@ -36,15 +51,25 @@ public class Match {
 	public LinkedList<RPS> playerOneChoices { get { return player1Choices; } }
 	public LinkedList<RPS> playerTwoChoices { get { return player2Choices; } }
 
+	/// <summary>
+	/// Get the last choice of the other player
+	/// </summary>
+	/// <param name="player"></param>
+	/// <returns></returns>
 	public RPS getLastChoiceOther(IRPSPlayer player)
 	{
-		if(player == player1)
+		LinkedList<RPS> list = (player1 == player ? player1Choices : player2Choices);
+		if (matchHasEnded)
 		{
-			return player2Choices.Last.Value;
+			return list.Last.Value;
+		}
+		else if (list.Count > 1)
+		{
+			return list.Last.Previous.Value;
 		}
 		else
 		{
-			return player1Choices.Last.Value;
+			return (RPS)Random.Range(0, 2);
 		}
 	}
 
@@ -60,8 +85,17 @@ public class Match {
 		player2.newRound();
 	}
 
+	/// <summary>
+	/// Sets the choice of the player for this round (next round begins when both players have selected their choice)
+	/// </summary>
+	/// <param name="player"></param>
+	/// <param name="choice"></param>
 	public void setPlayerChoice(IRPSPlayer player, RPS choice)
 	{
+		if(matchHasEnded)
+		{
+			return;
+		}
 		if(player == player1)
 		{
 			player1Choices.Last.Value = choice;
@@ -91,11 +125,52 @@ public class Match {
 		}
 		if(result == 1)
 		{
-			//player 1 has won
+			player2.health--;
+			if(player2.health == 0)
+			{
+				endMatch();
+			}
 		}
 		else if (result == 2)
 		{
-			//player 2 has won
+			player1.health--;
+			if (player1.health == 0)
+			{
+				endMatch();
+			}
+		}
+	}
+
+	private void endMatch()
+	{
+		player1.endMatch();
+		player2.endMatch();
+		player1HasPlayed = false;
+		player2HasPlayed = false;
+		matchHasEnded = true;
+	}
+
+	/// <summary>
+	/// Use this to inform the match that the player has finished ending the match (calls the callback method when both players are ready)
+	/// </summary>
+	/// <param name="player"></param>
+	public void setPlayerFinished(IRPSPlayer player)
+	{
+		if (!player1HasPlayed && player == player1)
+		{
+			player1HasPlayed = true;
+			if (player2HasPlayed)
+			{
+				callback(this);
+			}
+		}
+		else if (!player2HasPlayed && player == player2)
+		{
+			player2HasPlayed = true;
+			if (player1HasPlayed)
+			{
+				callback(this);
+			}
 		}
 	}
 
