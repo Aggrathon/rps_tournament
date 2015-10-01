@@ -20,10 +20,7 @@ public class PatternAI : ARPSPlayer
 
 	public override void newRound()
 	{
-		if(currentMatch != null)
-		{
-			currentMatch.setPlayerChoice(this, pattern[index]);
-			index = (index + 1) % pattern.Length;
-		}
+		currentMatch.setPlayerChoice(this, pattern[index]);
+		index = (index + 1) % pattern.Length;
 	}
 }

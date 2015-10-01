@@ -1,13 +1,16 @@
-﻿using UnityEngine;
+﻿using System;
 
 public class RandomAI : ARPSPlayer
 {
+	private Random rnd;
+
+	public RandomAI()
+	{
+		rnd = new Random();
+	}
 
 	public override void newRound()
 	{
-		if(currentMatch != null)
-		{
-			currentMatch.setPlayerChoice(this, (Match.RPS)Random.Range(0, 2));
-		}
+		currentMatch.setPlayerChoice(this, (Match.RPS)(rnd.Next()%3));
 	}
 }

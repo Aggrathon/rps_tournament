@@ -7,7 +7,6 @@ public class ConstantAI : ARPSPlayer {
 
 	public override void newRound()
 	{
-		if(currentMatch != null)
-			currentMatch.setPlayerChoice(this, constantChoice);
+		currentMatch.setPlayerChoice(this, constantChoice);
 	}
 }

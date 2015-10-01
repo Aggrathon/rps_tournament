@@ -11,7 +11,7 @@ public class Match {
 	}
 
 	public delegate void MatchEnded(Match match);
-
+	private delegate void next();
 
 	private IRPSPlayer player1;
 	private IRPSPlayer player2;
@@ -23,7 +23,10 @@ public class Match {
 	private LinkedList<RPS> player2Choices;
 
 	private MatchEnded callback;
-	private bool matchHasEnded;
+	private bool matchHasEnded = false;
+
+	private bool player1HasFinished = false;
+	private bool player2HasFinished = false;
 
 	/// <summary>
 	/// This creates a match and starts it immediately
@@ -40,7 +43,9 @@ public class Match {
 		player2Choices = new LinkedList<RPS>();
 
 		this.callback = callback;
-		matchHasEnded = false;
+		
+		player1.startMatch(this);
+		player2.startMatch(this);
 
 		newRound();
 	}
@@ -81,8 +86,10 @@ public class Match {
 		player1Choices.AddLast(RPS.Rock);
 		player2Choices.AddLast(RPS.Rock);
 
-		player1.newRound();
-		player2.newRound();
+		next del = player1.newRound;
+		del.BeginInvoke(null, null);
+		del = player2.newRound;
+		del.BeginInvoke(null, null);
 	}
 
 	/// <summary>
@@ -129,6 +136,7 @@ public class Match {
 			if(player2.health == 0)
 			{
 				endMatch();
+				return;
 			}
 		}
 		else if (result == 2)
@@ -137,8 +145,10 @@ public class Match {
 			if (player1.health == 0)
 			{
 				endMatch();
+				return;
 			}
 		}
+		newRound();
 	}
 
 	private void endMatch()
@@ -147,7 +157,6 @@ public class Match {
 		player2.endMatch();
 		player1HasPlayed = false;
 		player2HasPlayed = false;
-		matchHasEnded = true;
 	}
 
 	/// <summary>
@@ -156,20 +165,28 @@ public class Match {
 	/// <param name="player"></param>
 	public void setPlayerFinished(IRPSPlayer player)
 	{
-		if (!player1HasPlayed && player == player1)
+		if(matchHasEnded)
 		{
-			player1HasPlayed = true;
-			if (player2HasPlayed)
+			return;
+		}
+		if (player == player1)
+		{
+			player1HasFinished = true;
+			if (player2HasFinished)
 			{
-				callback(this);
+				matchHasEnded = true;
+				//callback(this);
+				callback.BeginInvoke(this, null, null);
 			}
 		}
-		else if (!player2HasPlayed && player == player2)
+		else if (player == player2)
 		{
-			player2HasPlayed = true;
-			if (player1HasPlayed)
+			player2HasFinished = true;
+			if (player1HasFinished)
 			{
-				callback(this);
+				matchHasEnded = true;
+				//callback(this);
+				callback.BeginInvoke(this, null, null);
 			}
 		}
 	}

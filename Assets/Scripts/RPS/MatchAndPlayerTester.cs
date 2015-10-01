@@ -11,31 +11,51 @@ public class MatchAndPlayerTester : ScriptableObject {
 [CustomEditor(typeof(MatchAndPlayerTester), true)]
 public class TestMatchInspector : Editor
 {
+	int i, j;
+
 
 	override public void OnInspectorGUI()
 	{
 		if (GUILayout.Button("Run Test Matches on Players"))
 		{
-			ARPSPlayer[] players = (target as MatchAndPlayerTester).players;
-            for (int i = 0; i < players.Length; i++)
-			{
-				for(int j = i+1; j < players.Length; j++)
-				{
-					new Match(players[i], players[j], (Match m) =>
-					{
-						Debug.Log("Match between " + (m.playerOne as ARPSPlayer).name + " and " + (m.playerTwo as ARPSPlayer).name + " finished in " + m.playerOneChoices.Count + " rounds");
-						if(m.playerOne.health > 0)
-						{
-							Debug.Log("Winner: "+(m.playerOne as ARPSPlayer).name+" ("+m.playerOne.health+" lives left)");
-						} else
-						{
-							Debug.Log("Winner: " + (m.playerTwo as ARPSPlayer).name + " (" + m.playerTwo.health + " lives left)");
-						}
-					});
-				}
-			}
+			Debug.Log("Test started");
+			i = 0;
+			j = 1;
+			startMatch();
 		}
 		GUILayout.Space(10);
 		DrawDefaultInspector();
+	}
+
+	public void startMatch()
+	{
+		ARPSPlayer[] players = (target as MatchAndPlayerTester).players;
+		new Match(players[i], players[j], (Match m) =>
+		{
+			string result = "Match between " + (m.playerOne as ARPSPlayer).name + " and " + (m.playerTwo as ARPSPlayer).name
+				+ " finished in " + m.playerOneChoices.Count + " rounds \n";
+            if (m.playerOne.health > 0)
+			{
+				result += "Winner: " + (m.playerOne as ARPSPlayer).name + "(" + m.playerOne.health + " lives left)";
+            }
+			else
+			{
+				result += "Winner: " + (m.playerTwo as ARPSPlayer).name + " (" + m.playerTwo.health + " lives left)";
+			}
+			Debug.Log(result);
+
+			j++;
+			if (j >= players.Length)
+			{
+				i++;
+				if (i >= players.Length -1)
+				{
+					Debug.Log("Test completed");
+					return;
+                }
+				j = i + 1;
+			}
+			startMatch();
+		});
 	}
 }
