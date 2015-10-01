@@ -56,8 +56,8 @@ public class Match {
 		player1Choices.AddLast(RPS.Rock);
 		player2Choices.AddLast(RPS.Rock);
 
-		player1.newTurn();
-		player2.newTurn();
+		player1.newRound();
+		player2.newRound();
 	}
 
 	public void setPlayerChoice(IRPSPlayer player, RPS choice)

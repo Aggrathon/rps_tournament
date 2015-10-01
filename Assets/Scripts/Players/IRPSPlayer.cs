@@ -1,6 +1,7 @@
 ﻿
 public interface IRPSPlayer {
-    void startMatch();
+    void startMatch(Match match);
     void endMatch();
-	void newTurn();
+	void newRound();
+	int health { get; set; }
 }
