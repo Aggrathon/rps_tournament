@@ -50,25 +50,32 @@ public class Tournament : MonoBehaviour {
             waiting = false;
             return;
         }
-        //TODO
+
         ladder[challenger].transform.DOScale(1.2f, tweenTime);
         ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() =>
-        {
-            ladder[challenger].transform.DOScale(1f, tweenTime);
-            ladder[challengee].transform.DOScale(1f, tweenTime).OnComplete(() =>
-            {
-                waiting = false;
-            });
+        {     
+            //ACTUAL BATTLE STUFF GOES HERE
             var challengerWon = Random.value < 0.5 ? true : false;
-            if (challengerWon)
-            {
-                HandleChallengerVictory(challenger, challengee);
-            }
-            else
-            {
-                IncrementTurn();
-            }
+            EndMatch(challenger, challengee, challengerWon);
         });
+    }
+
+    void EndMatch(int challenger, int challengee, bool challengerWon)
+    {
+        ladder[challenger].transform.DOScale(1f, tweenTime);
+        ladder[challengee].transform.DOScale(1f, tweenTime).OnComplete(() =>
+        {
+            waiting = false;
+        });
+
+        if (challengerWon)
+        {
+            HandleChallengerVictory(challenger, challengee);
+        }
+        else
+        {
+            IncrementTurn();
+        }
     }
 
     void HandleChallengerVictory(int winnerPos, int loserPos)
