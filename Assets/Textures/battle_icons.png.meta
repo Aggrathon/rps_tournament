@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 guid: 88cfbb7d404449c4ebb56ef4bff69eec
-timeCreated: 1443878194
+timeCreated: 1443881511
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: HeartEmpty
     21300002: HeartFull
+    21300004: HeartEmpty
+    21300006: HeartFull
+    21300008: Rock
+    21300010: Paper
+    21300012: Scissors
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -55,20 +60,50 @@ TextureImporter:
     - name: HeartEmpty
       rect:
         serializedVersion: 2
-        x: 4
-        y: 779
-        width: 248
-        height: 234
+        x: 0
+        y: 768
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: HeartFull
       rect:
         serializedVersion: 2
-        x: 260
-        y: 779
-        width: 248
-        height: 234
+        x: 256
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rock
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Paper
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Scissors
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
