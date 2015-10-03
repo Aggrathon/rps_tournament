@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
+  m_Name: PatternAI
+  m_EditorClassIdentifier: 
+  name: PatternAI
+  look: {fileID: 0}
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  maxHealth: 5
+  pattern: 00000000010000000200000001000000000000000200000002000000000000000100000000000000
+  resetEachMatch: 0

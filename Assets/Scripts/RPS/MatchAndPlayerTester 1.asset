@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bceafe4941f50bc4aa9a641744eb382b, type: 3}
+  m_Name: MatchAndPlayerTester 1
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 11400000, guid: c1ab3ad2fc755bf40bf1cb9f2d0f5910, type: 2}
+  - {fileID: 11400000, guid: b26ff42438f3f9442a92f3e5c3580224, type: 2}
+  - {fileID: 11400000, guid: a7ecccaa2763e7f4aa78c923a9c06a48, type: 2}
+  - {fileID: 11400000, guid: c10abbbabd0173743913bb4854334463, type: 2}
+  - {fileID: 11400000, guid: 824a26dbf25c8fe4db27d9b4cfcdd152, type: 2}
