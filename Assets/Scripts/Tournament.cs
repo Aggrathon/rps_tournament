@@ -54,7 +54,7 @@ public class Tournament : MonoBehaviour {
         ladder[challenger].transform.DOScale(1.2f, tweenTime);
         ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() =>
         {     
-            //ACTUAL BATTLE STUFF GOES HERE
+            //ACTUAL BATTLE STUFF GOES HERE, ASYNC FUNCTION WHOSE CALLBACK CALLS EndMatch
             var challengerWon = Random.value < 0.5 ? true : false;
             EndMatch(challenger, challengee, challengerWon);
         });
