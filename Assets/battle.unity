@@ -95,9 +95,8 @@ GameObject:
   - 224: {fileID: 67120001}
   - 222: {fileID: 67120003}
   - 114: {fileID: 67120002}
-  - 114: {fileID: 67120004}
   m_Layer: 5
-  m_Name: BattlePanel
+  m_Name: BattleScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,12 +113,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1096366925}
-  m_Father: {fileID: 929580879}
+  m_Father: {fileID: 1458857150}
   m_RootOrder: 0
   m_AnchorMin: {x: .100000001, y: .100000001}
   m_AnchorMax: {x: .899999976, y: .899999976}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 917.599915, y: 529.599976}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &67120002
 MonoBehaviour:
@@ -154,30 +153,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 67120000}
---- !u!114 &67120004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 67120000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad68c074623b2244bfbc8e7efbaf5ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fullHeart: {fileID: 21300002, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
-  emptyHeart: {fileID: 21300000, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
-  rock: {fileID: 21300008, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
-  paper: {fileID: 21300010, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
-  scissors: {fileID: 21300012, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
-  humanHealthContainer: {fileID: 1289448410}
-  humanHistoryContainer: {fileID: 1244137805}
-  humanLook: {fileID: 1860938599}
-  humanName: {fileID: 1224743745}
-  aiHealthContainer: {fileID: 1942186162}
-  aiHistoryContainer: {fileID: 1313472494}
-  aiLook: {fileID: 2004568048}
-  aiName: {fileID: 2086359792}
 --- !u!1 &83905889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 67120004}
+      - m_Target: {fileID: 1458857152}
         m_MethodName: selectScissors
         m_Mode: 1
         m_Arguments:
@@ -3113,7 +3088,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 67120001}
+  - {fileID: 1458857150}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -3508,7 +3483,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 67120004}
+      - m_Target: {fileID: 1458857152}
         m_MethodName: selectRock
         m_Mode: 1
         m_Arguments:
@@ -4252,7 +4227,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player Name
+  m_Text: Human Player
 --- !u!222 &1224743746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4973,7 +4948,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 67120004}
+      - m_Target: {fileID: 1458857152}
         m_MethodName: selectPaper
         m_Mode: 1
         m_Arguments:
@@ -5019,6 +4994,79 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448515985}
+--- !u!1 &1458857149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1458857150}
+  - 114: {fileID: 1458857152}
+  - 114: {fileID: 1458857151}
+  m_Layer: 5
+  m_Name: BattleUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1458857150
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458857149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 67120001}
+  m_Father: {fileID: 929580879}
+  m_RootOrder: 0
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1458857151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0fc85b1aa024045910d83c09d9d538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  humanPlayer: {fileID: 11400000, guid: d530e9eb972f77f49adc17a2415d03c6, type: 2}
+  aiPlayer: {fileID: 11400000, guid: c10abbbabd0173743913bb4854334463, type: 2}
+--- !u!114 &1458857152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458857149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad68c074623b2244bfbc8e7efbaf5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleScreen: {fileID: 67120001}
+  fullHeart: {fileID: 21300002, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  rock: {fileID: 21300008, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  paper: {fileID: 21300010, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  scissors: {fileID: 21300012, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  humanHealthContainer: {fileID: 1289448410}
+  humanHistoryContainer: {fileID: 1244137805}
+  humanLook: {fileID: 1860938599}
+  humanName: {fileID: 1224743745}
+  aiHealthContainer: {fileID: 1942186162}
+  aiHistoryContainer: {fileID: 1313472494}
+  aiLook: {fileID: 2004568048}
+  aiName: {fileID: 2086359792}
 --- !u!1 &1485908439
 GameObject:
   m_ObjectHideFlags: 0

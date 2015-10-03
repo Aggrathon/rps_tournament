@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class BattleUI : MonoBehaviour {
 
@@ -7,8 +8,14 @@ public class BattleUI : MonoBehaviour {
 	private ARPSPlayer ai;
 	private Match match;
 
+	private bool open = false;
+	private bool next = false;
+	private bool close = false;
+	private bool work = false;
+
 	private bool firstTurn;
-	
+
+	public RectTransform battleScreen;
 
 	[Header("Icons")]
 	public Sprite fullHeart;
@@ -30,14 +37,44 @@ public class BattleUI : MonoBehaviour {
 	public Text aiName;
 
 	void Start () {
-		gameObject.SetActive(false);
+		battleScreen.gameObject.SetActive(false);
 	}
 
-	public void Show(HumanPlayer player, ARPSPlayer opponent, Match match)
+	void Update()
+	{
+		if(work)
+		{
+			if (open)
+			{
+				showOnMain();
+				open = false;
+			}
+			if (next)
+			{
+				roundOnMain();
+				next = false;
+			}
+			if (close)
+			{
+				hideOnMain();
+				close = false;
+			}
+			work = false;
+		}
+	}
+
+	public void Show(HumanPlayer player)
 	{
 		human = player;
-		ai = opponent;
-		this.match = match;
+		match = player.getMatch();
+		ai = match.getOtherPlayer(player) as ARPSPlayer;
+		firstTurn = true;
+
+		open = true;
+		work = true;
+	}
+	private void showOnMain()
+	{
 		humanLook.sprite = human.look;
 		aiLook.sprite = ai.look;
 		humanName.text = human.name;
@@ -52,16 +89,23 @@ public class BattleUI : MonoBehaviour {
 		{
 			aiHistoryContainer.GetChild(i).gameObject.SetActive(false);
 		}
-		firstTurn = true;
 
 		//Animate open
+		battleScreen.gameObject.SetActive(true);
+
 	}
 
-	public void NewTurn()
+
+	public void NewRound()
+	{
+		next = true;
+		work = true;
+	}
+	private void roundOnMain()
 	{
 		setHealths();
 
-		if(firstTurn)
+		if (firstTurn)
 		{
 			firstTurn = false;
 		}
@@ -83,11 +127,18 @@ public class BattleUI : MonoBehaviour {
 
 	public void Hide()
 	{
+		close = true;
+		work = true;
+	}
+	private void hideOnMain()
+	{
+		//Animate close
+		battleScreen.gameObject.SetActive(false);
+
+		human.setFinishedClosing();
 		human = null;
 		ai = null;
 		match = null;
-
-		//Animate close
 	}
 
 	public void selectRock()
