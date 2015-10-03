@@ -17,3 +17,4 @@ MonoBehaviour:
   winPhrase: 
   loosePhrase: 
   maxHealth: 5
+  difficulty: 0

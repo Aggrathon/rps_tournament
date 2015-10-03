@@ -14,6 +14,8 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 	public string winPhrase;
 	public string loosePhrase;
 	public int maxHealth = 5;
+	[Range(0, 100)]
+	public int difficulty = 50;
 
 	public int health { get { return currentHealth; } set { currentHealth = value; } }
 
