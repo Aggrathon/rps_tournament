@@ -95,8 +95,9 @@ GameObject:
   - 224: {fileID: 67120001}
   - 222: {fileID: 67120003}
   - 114: {fileID: 67120002}
+  - 114: {fileID: 67120004}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: BattlePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +154,30 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 67120000}
+--- !u!114 &67120004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67120000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad68c074623b2244bfbc8e7efbaf5ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHeart: {fileID: 21300002, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  rock: {fileID: 21300008, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  paper: {fileID: 21300010, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  scissors: {fileID: 21300012, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
+  humanHealthContainer: {fileID: 1289448410}
+  humanHistoryContainer: {fileID: 1244137805}
+  humanLook: {fileID: 1860938599}
+  humanName: {fileID: 1224743745}
+  aiHealthContainer: {fileID: 1942186162}
+  aiHistoryContainer: {fileID: 1313472494}
+  aiLook: {fileID: 2004568048}
+  aiName: {fileID: 2086359792}
 --- !u!1 &83905889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,7 +2436,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 752962532}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 67120004}
+        m_MethodName: selectScissors
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &752962532
@@ -3471,7 +3507,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 998675537}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 67120004}
+        m_MethodName: selectRock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &998675537
@@ -4151,7 +4198,7 @@ GameObject:
   - 222: {fileID: 1224743746}
   - 114: {fileID: 1224743745}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4925,7 +4972,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1448515988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 67120004}
+        m_MethodName: selectPaper
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1448515988
@@ -6899,7 +6957,7 @@ GameObject:
   - 222: {fileID: 2086359793}
   - 114: {fileID: 2086359792}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
