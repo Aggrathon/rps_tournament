@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: HUMAN PLAYER
   m_EditorClassIdentifier: 
   name: Human Player
-  look: {fileID: 0}
+  look: {fileID: 21300000, guid: f3befd505b966fc4fbef3c3159cb07c7, type: 3}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
