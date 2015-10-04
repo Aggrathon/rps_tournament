@@ -8,14 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1639cf3262df846ba73cf4d726a7b3, type: 3}
-  m_Name: ConstantAI scissors
+  m_Script: {fileID: 11500000, guid: 4f572c1e6540cba4099fba6d612c9d68, type: 3}
+  m_Name: HUMAN PLAYER
   m_EditorClassIdentifier: 
-  name: ConstantAI scissors
-  look: {fileID: 0}
+  name: Human Player
+  look: {fileID: 21300000, guid: f3befd505b966fc4fbef3c3159cb07c7, type: 3}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
   maxHealth: 5
-  difficulty: 10
-  constantChoice: 2
+  difficulty: 0

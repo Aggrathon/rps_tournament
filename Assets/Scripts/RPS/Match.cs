@@ -63,11 +63,11 @@ public class Match {
 	public LinkedList<RPS> playerTwoChoices { get { return player2Choices; } }
 
 	/// <summary>
-	/// Get the last choice of the other player
+	/// Get the last choice of the player
 	/// </summary>
 	/// <param name="player"></param>
 	/// <returns></returns>
-	public RPS getLastChoiceOther(IRPSPlayer player)
+	public RPS getLastChoicePlayer(IRPSPlayer player)
 	{
 		LinkedList<RPS> list = (player1 == player ? player1Choices : player2Choices);
 		if (matchHasEnded)
@@ -82,6 +82,26 @@ public class Match {
 		{
 			return (RPS)Random.Range(0, 2);
 		}
+	}
+
+	/// <summary>
+	/// Get the last choice of the other player
+	/// </summary>
+	/// <param name="player"></param>
+	/// <returns></returns>
+	public RPS getLastChoiceOther(IRPSPlayer player)
+	{
+		return getLastChoicePlayer(getOtherPlayer(player));
+	}
+
+	/// <summary>
+	/// Returns the other player
+	/// </summary>
+	/// <param name="player"></param>
+	/// <returns></returns>
+	public IRPSPlayer getOtherPlayer(IRPSPlayer player)
+	{
+		return (player == player2 ? player1 : player2);
 	}
 
 	private void newRound()
@@ -159,10 +179,15 @@ public class Match {
 
 	private void endMatch()
 	{
+		if(matchHasEnded)
+		{
+			return;
+		}
 		player1.endMatch();
 		player2.endMatch();
 		player1HasPlayed = false;
 		player2HasPlayed = false;
+		matchHasEnded = true;
 	}
 
 	/// <summary>
@@ -171,7 +196,7 @@ public class Match {
 	/// <param name="player"></param>
 	public void setPlayerFinished(IRPSPlayer player)
 	{
-		if(matchHasEnded)
+		if(player1HasFinished && player2HasFinished)
 		{
 			return;
 		}
@@ -181,7 +206,6 @@ public class Match {
 			if (player2HasFinished)
 			{
 				matchHasEnded = true;
-				//callback(this);
 				callback.BeginInvoke(this, null, null);
 			}
 		}
@@ -191,7 +215,6 @@ public class Match {
 			if (player1HasFinished)
 			{
 				matchHasEnded = true;
-				//callback(this);
 				callback.BeginInvoke(this, null, null);
 			}
 		}
