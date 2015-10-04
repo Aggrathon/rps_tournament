@@ -39,6 +39,9 @@ public class Match {
 		this.player1 = player1;
 		this.player2 = player2;
 
+        playerOneHealth = player1.health;
+        playerTwoHealth = player2.health;
+
 		player1Choices = new LinkedList<RPS>();
 		player2Choices = new LinkedList<RPS>();
 
@@ -49,6 +52,9 @@ public class Match {
 
 		newRound();
 	}
+
+    public int playerOneHealth { get; private set; }
+    public int playerTwoHealth { get; private set; }
 
 	public IRPSPlayer playerOne { get { return player1; } }
 	public IRPSPlayer playerTwo { get { return player2; } }
@@ -132,8 +138,8 @@ public class Match {
 		}
 		if(result == 1)
 		{
-			player2.health--;
-			if(player2.health == 0)
+			playerTwoHealth--;
+			if(playerTwoHealth == 0)
 			{
 				endMatch();
 				return;
@@ -141,8 +147,8 @@ public class Match {
 		}
 		else if (result == 2)
 		{
-			player1.health--;
-			if (player1.health == 0)
+			playerOneHealth--;
+			if (playerOneHealth == 0)
 			{
 				endMatch();
 				return;

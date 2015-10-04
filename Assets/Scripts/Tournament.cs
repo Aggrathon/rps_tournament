@@ -14,15 +14,19 @@ public class Tournament : MonoBehaviour {
     public GameObject cell;
     public float tweenTime;
     private GameObject canvas;
+    private List<ARPSPlayer> competitors;
     private List<Participant> participants;
     private List<GameObject> ladder;
+    //private List<ARPSPlayer> players;
     private int nextTurn;
     private bool waiting;
 
 	// Use this for initialization
 	void Start () {
         canvas = GameObject.Find("Canvas");
-        ladder = CreateLadder(16);
+        TournamentState.instance.Competitors = CreateScriptableObjects(16);
+        competitors = TournamentState.instance.Competitors;
+        ladder = CreateLadder(competitors);
         participants = ladder.Select(x => x.GetComponent<Participant>()).Reverse().ToList();
         nextTurn = 0;
         waiting = false;
@@ -41,6 +45,17 @@ public class Tournament : MonoBehaviour {
             );
         }
 	}
+
+    List<ARPSPlayer> CreateScriptableObjects(int amount)
+    {
+        var list = new List<ARPSPlayer>();
+        for (var i = 0; i < amount; i++)
+        {
+            list.Add(ScriptableObject.CreateInstance<RandomAI>());
+            list[i].name = "RandomAI " + (i + 1).ToString();
+        }
+        return list;
+    }
 
     void SetupMatch(int challenger, int challengee)
     {
@@ -69,6 +84,26 @@ public class Tournament : MonoBehaviour {
         });
 
         if (challengerWon)
+        {
+            HandleChallengerVictory(challenger, challengee);
+        }
+        else
+        {
+            IncrementTurn();
+        }
+    }
+
+    void EndMatch(int challenger, int challengee, Match match)
+    {
+        ladder[challenger].transform.DOScale(1f, tweenTime);
+        ladder[challengee].transform.DOScale(1f, tweenTime).OnComplete(() =>
+        {
+            waiting = false;
+        });
+
+        TournamentState.instance.Matches.Add(match);
+
+        if (match.playerOneHealth > match.playerTwoHealth)
         {
             HandleChallengerVictory(challenger, challengee);
         }
@@ -107,16 +142,16 @@ public class Tournament : MonoBehaviour {
         nextTurn = (nextTurn + 1) % participants.Count;
     }
 
-    List<GameObject> CreateLadder(int player_amount)
+    List<GameObject> CreateLadder(List<ARPSPlayer> players)
     {
         var list = new List<GameObject>();
-        var next_y = -30 + player_amount / 2 * 64;
-        for (var i = 1; i <= player_amount; i++)
+        var next_y = -30 + players.Count / 2 * 64;
+        for (var i = 0; i < players.Count; i++)
         {
             var obj = (GameObject)Instantiate(cell, Vector3.zero, Quaternion.identity);
             obj.transform.SetParent(canvas.transform, false);
-            obj.transform.GetComponentsInChildren<Text>()[0].text = "Player " + (player_amount + 1 - i).ToString();
-            obj.transform.GetComponentsInChildren<Text>()[1].text = i.ToString();
+            obj.transform.GetComponentsInChildren<Text>()[0].text = players[i].name;
+            obj.transform.GetComponentsInChildren<Text>()[1].text = (i + 1).ToString();
             obj.transform.position = new Vector3(0, next_y, 0);
             list.Add(obj);
 
