@@ -104,6 +104,26 @@ public class Match {
 		return (player == player2 ? player1 : player2);
 	}
 
+	/// <summary>
+	/// Returns the health of the player
+	/// </summary>
+	/// <param name="player"></param>
+	/// <returns></returns>
+	public int getHealthPlayer(IRPSPlayer player)
+	{
+		return (player == player1 ? playerOneHealth : playerTwoHealth);
+	}
+
+	/// <summary>
+	/// Returns the health of the other player
+	/// </summary>
+	/// <param name="player"></param>
+	/// <returns></returns>
+	public int getHealthOther(IRPSPlayer player)
+	{
+		return (player == player2 ? playerOneHealth : playerTwoHealth);
+	}
+
 	private void newRound()
 	{
 		player1HasPlayed = false;

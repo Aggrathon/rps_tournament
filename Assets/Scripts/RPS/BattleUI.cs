@@ -166,13 +166,13 @@ public class BattleUI : MonoBehaviour {
 	private void setHealths()
 	{
 		int i;
-		for (i = 0; i < human.health; i++)
+		for (i = 0; i < match.getHealthPlayer(human); i++)
 		{
 			GameObject go = humanHealthContainer.GetChild(i).gameObject;
 			go.SetActive(true);
 			go.GetComponent<Image>().sprite = fullHeart;
 		}
-		for (; i < human.maxHealth; i++)
+		for (; i < human.health; i++)
 		{
 			GameObject go = humanHealthContainer.GetChild(i).gameObject;
 			go.SetActive(true);
@@ -183,13 +183,13 @@ public class BattleUI : MonoBehaviour {
 			humanHealthContainer.GetChild(i).gameObject.SetActive(false);
 		}
 
-		for (i = 0; i < ai.health; i++)
+		for (i = 0; i < match.getHealthPlayer(ai); i++)
 		{
 			GameObject go = aiHealthContainer.GetChild(i).gameObject;
 			go.SetActive(true);
 			go.GetComponent<Image>().sprite = fullHeart;
 		}
-		for (; i < ai.maxHealth; i++)
+		for (; i < ai.health; i++)
 		{
 			GameObject go = aiHealthContainer.GetChild(i).gameObject;
 			go.SetActive(true);

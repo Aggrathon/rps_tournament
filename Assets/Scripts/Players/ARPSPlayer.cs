@@ -5,7 +5,6 @@ using System;
 public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 
 	protected Match currentMatch;
-	private int currentHealth;
 
 	[Header("Player Attributes")]
 	new public string name;
@@ -13,11 +12,11 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 	public string catchPhrase;
 	public string winPhrase;
 	public string loosePhrase;
-	public int maxHealth = 5;
+	[SerializeField] private int Health = 5;
 	[Range(0, 100)]
 	public int difficulty = 50;
 
-	public int health { get { return currentHealth; } set { currentHealth = value; } }
+	public int health { get { return Health; } set { Health = value; } }
 
 	/// <summary>
 	/// This method sets up everything needed for a match
@@ -27,7 +26,6 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 	virtual public void startMatch(Match match)
 	{
 		currentMatch = match;
-		currentHealth = maxHealth;
 	}
 
 	/// <summary>
