@@ -92,7 +92,7 @@ public class BattleUI : MonoBehaviour {
 
 		//Animate open
 		battleScreen.gameObject.SetActive(true);
-
+		battleScreen.GetComponent<Animator>().SetTrigger("Show");
 	}
 
 
@@ -133,7 +133,7 @@ public class BattleUI : MonoBehaviour {
 	private void hideOnMain()
 	{
 		//Animate close
-		battleScreen.gameObject.SetActive(false);
+		battleScreen.GetComponent<Animator>().SetTrigger("Hide");
 
 		human.setFinishedClosing();
 		human = null;

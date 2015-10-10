@@ -95,6 +95,7 @@ GameObject:
   - 224: {fileID: 67120001}
   - 222: {fileID: 67120003}
   - 114: {fileID: 67120002}
+  - 95: {fileID: 67120004}
   m_Layer: 5
   m_Name: BattleScreen
   m_TagString: Untagged
@@ -118,7 +119,7 @@ RectTransform:
   m_AnchorMin: {x: .100000001, y: .100000001}
   m_AnchorMax: {x: .899999976, y: .899999976}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 917.599915, y: 529.599976}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &67120002
 MonoBehaviour:
@@ -153,6 +154,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 67120000}
+--- !u!95 &67120004
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67120000}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a59a66bf4aec51c4fbec64880c92b1fc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &83905889
 GameObject:
   m_ObjectHideFlags: 0
@@ -5024,10 +5042,10 @@ RectTransform:
   - {fileID: 67120001}
   m_Father: {fileID: 929580879}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1458857151
 MonoBehaviour:
