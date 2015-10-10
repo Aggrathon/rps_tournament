@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 88cfbb7d404449c4ebb56ef4bff69eec
-timeCreated: 1443881511
+timeCreated: 1444495462
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,9 @@ TextureImporter:
     21300008: Rock
     21300010: Paper
     21300012: Scissors
+    21300014: HandPaper
+    21300016: HandRock
+    21300018: HandScissors
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -103,6 +106,36 @@ TextureImporter:
         x: 0
         y: 512
         width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HandPaper
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HandRock
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: HandScissors
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 384
         height: 256
       alignment: 0
       pivot: {x: .5, y: .5}

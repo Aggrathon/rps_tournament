@@ -30,12 +30,14 @@ public class BattleUI : MonoBehaviour {
 	public RectTransform humanHistoryContainer;
 	public Image humanLook;
 	public Text humanName;
+	public Animator humanHand;
 	[Header("AI")]
 	public RectTransform aiHealthContainer;
 	public RectTransform aiHistoryContainer;
 	public Image aiLook;
 	public Text aiName;
 	public Text aiTaunt;
+	public Animator aiHand;
 
 	[Header("Completion")]
 	public RectTransform completionPanel;
@@ -127,11 +129,23 @@ public class BattleUI : MonoBehaviour {
 			his.SetSiblingIndex(humanHistoryContainer.childCount - 1);
 			his.GetComponent<Image>().sprite = getChoiceSprite(ch);
 			his.gameObject.SetActive(true);
+			switch(ch)
+			{
+				case Match.RPS.Rock: humanHand.SetTrigger("Rock"); break;
+				case Match.RPS.Scissors: humanHand.SetTrigger("Scissors"); break;
+				case Match.RPS.Paper: humanHand.SetTrigger("Paper"); break;
+			}
 
 			his = aiHistoryContainer.GetChild(aiHistoryContainer.childCount - 1);
 			his.SetSiblingIndex(0);
 			his.GetComponent<Image>().sprite = getChoiceSprite(ca);
 			his.gameObject.SetActive(true);
+			switch (ca)
+			{
+				case Match.RPS.Rock: aiHand.SetTrigger("Rock"); break;
+				case Match.RPS.Scissors: aiHand.SetTrigger("Scissors"); break;
+				case Match.RPS.Paper: aiHand.SetTrigger("Paper"); break;
+			}
 
 			//Animate result
 			IRPSPlayer winner = match.getLastWinner();
