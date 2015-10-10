@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ConstantAI rock
   look: {fileID: 0}
-  catchPhrase: 
-  winPhrase: 
+  catchPhrase: I WILL CRUSH YOU!
+  winPhrase: Rock rocks!
   loosePhrase: 
-  maxHealth: 5
+  Health: 5
   difficulty: 10
   constantChoice: 0

@@ -35,6 +35,14 @@ public class BattleUI : MonoBehaviour {
 	public RectTransform aiHistoryContainer;
 	public Image aiLook;
 	public Text aiName;
+	public Text aiTaunt;
+
+	[Header("Completion")]
+	public RectTransform completionPanel;
+	public Text completionResult;
+	public Image completionImage;
+	public Text completionPhrase;
+	public Button completionClose;
 
 	void Start () {
 		battleScreen.gameObject.SetActive(false);
@@ -90,6 +98,9 @@ public class BattleUI : MonoBehaviour {
 			aiHistoryContainer.GetChild(i).gameObject.SetActive(false);
 		}
 
+		aiTaunt.text = ai.catchPhrase;
+		aiTaunt.enabled = true;
+
 		//Animate open
 		battleScreen.gameObject.SetActive(true);
 	}
@@ -135,6 +146,8 @@ public class BattleUI : MonoBehaviour {
 					humanLook.transform.parent.GetComponent<Animator>().SetTrigger("Flash");
 				}
 			}
+
+			aiTaunt.enabled = false;
 		}
 	}
 
@@ -149,10 +162,27 @@ public class BattleUI : MonoBehaviour {
 		//Animate close
 		battleScreen.GetComponent<Animator>().SetTrigger("Hide");
 
-		human.setFinishedClosing();
-		human = null;
-		ai = null;
-		match = null;
+		completionPanel.gameObject.SetActive(true);
+		if(match.getLastWinner() == human)
+		{
+			completionPhrase.text = ai.loosePhrase;
+			completionResult.text = "<color=green>You Won</color>";
+        }
+		else
+		{
+			completionPhrase.text = ai.winPhrase;
+			completionResult.text = "<color=red>You Lost</color>";
+		}
+		completionImage.sprite = ai.look;
+		completionClose.onClick.RemoveAllListeners();
+		completionClose.onClick.AddListener(() =>
+		{
+			human.setFinishedClosing();
+			human = null;
+			ai = null;
+			match = null;
+			completionPanel.gameObject.SetActive(false);
+		});
 	}
 
 	public void selectRock()
