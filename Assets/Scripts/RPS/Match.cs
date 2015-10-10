@@ -7,7 +7,8 @@ public class Match {
 	{
 		Rock = 0,
 		Paper = 1,
-		Scissors = 2
+		Scissors = 2,
+		UNDEFINED = 404
 	}
 
 	public delegate void MatchEnded(Match match);
@@ -21,6 +22,9 @@ public class Match {
 
 	private LinkedList<RPS> player1Choices;
 	private LinkedList<RPS> player2Choices;
+
+	private RPS player1Choice;
+	private RPS player2Choice;
 
 	private MatchEnded callback;
 	private bool matchHasEnded = false;
@@ -70,17 +74,13 @@ public class Match {
 	public RPS getLastChoicePlayer(IRPSPlayer player)
 	{
 		LinkedList<RPS> list = (player1 == player ? player1Choices : player2Choices);
-		if (matchHasEnded)
+		if (list.Count > 0)
 		{
 			return list.Last.Value;
 		}
-		else if (list.Count > 1)
-		{
-			return list.Last.Previous.Value;
-		}
 		else
 		{
-			return (RPS)Random.Range(0, 2);
+			return RPS.UNDEFINED;
 		}
 	}
 
@@ -129,9 +129,6 @@ public class Match {
 		player1HasPlayed = false;
 		player2HasPlayed = false;
 
-		player1Choices.AddLast(RPS.Rock);
-		player2Choices.AddLast(RPS.Rock);
-
 		next del = player1.newRound;
 		del.BeginInvoke(null, null);
 		del = player2.newRound;
@@ -151,7 +148,7 @@ public class Match {
 		}
 		if(player == player1)
 		{
-			player1Choices.Last.Value = choice;
+			player1Choice = choice;
 			player1HasPlayed = true;
 			if(player2HasPlayed)
 			{
@@ -160,7 +157,7 @@ public class Match {
 		}
 		else if(player == player2)
 		{
-			player2Choices.Last.Value = choice;
+			player2Choice = choice;
 			player2HasPlayed = true;
 			if (player1HasPlayed)
 			{
@@ -171,11 +168,10 @@ public class Match {
 
 	private void endRound()
 	{
-		int result = player1Choices.Last.Value - player2Choices.Last.Value;
-		if(result < 0)
-		{
-			result += 3;
-		}
+		player1Choices.AddLast(player1Choice);
+		player2Choices.AddLast(player2Choice);
+
+		int result = getLastWinnerIndex();
 		if(result == 1)
 		{
 			playerTwoHealth--;
@@ -195,6 +191,34 @@ public class Match {
 			}
 		}
 		newRound();
+	}
+
+	private int getLastWinnerIndex()
+	{
+		int result = player1Choices.Last.Value - player2Choices.Last.Value;
+		if (result < 0)
+		{
+			result += 3;
+		}
+		return result;
+	}
+
+	/// <summary>
+	/// This function gets the last winner
+	/// </summary>
+	/// <returns>if no last winner (no round or draw) it returns null</returns>
+	public IRPSPlayer getLastWinner()
+	{
+		switch(getLastWinnerIndex())
+		{
+			case 1:
+				return player1;
+			case 2:
+				return player2;
+			case 0:
+			default:
+				return null;
+		}
 	}
 
 	private void endMatch()
