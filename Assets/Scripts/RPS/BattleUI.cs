@@ -92,7 +92,6 @@ public class BattleUI : MonoBehaviour {
 
 		//Animate open
 		battleScreen.gameObject.SetActive(true);
-		battleScreen.GetComponent<Animator>().SetTrigger("Show");
 	}
 
 
@@ -111,22 +110,37 @@ public class BattleUI : MonoBehaviour {
 		}
 		else
 		{
+			Match.RPS ch = match.getLastChoicePlayer(human);
+			Match.RPS ca = match.getLastChoicePlayer(ai);
 			Transform his = humanHistoryContainer.GetChild(0);
 			his.SetSiblingIndex(humanHistoryContainer.childCount - 1);
-			his.GetComponent<Image>().sprite = getChoiceSprite(match.getLastChoicePlayer(human));
+			his.GetComponent<Image>().sprite = getChoiceSprite(ch);
 			his.gameObject.SetActive(true);
 
 			his = aiHistoryContainer.GetChild(aiHistoryContainer.childCount - 1);
 			his.SetSiblingIndex(0);
-			his.GetComponent<Image>().sprite = getChoiceSprite(match.getLastChoicePlayer(ai));
+			his.GetComponent<Image>().sprite = getChoiceSprite(ca);
 			his.gameObject.SetActive(true);
 
 			//Animate result
+			IRPSPlayer winner = match.getLastWinner();
+			if(winner != null)
+			{
+				if (winner == human)
+				{
+					aiLook.transform.parent.GetComponent<Animator>().SetTrigger("Flash");
+				}
+				else if (winner == ai)
+				{
+					humanLook.transform.parent.GetComponent<Animator>().SetTrigger("Flash");
+				}
+			}
 		}
 	}
 
 	public void Hide()
 	{
+		next = true;
 		close = true;
 		work = true;
 	}
@@ -211,7 +225,8 @@ public class BattleUI : MonoBehaviour {
 				return paper;
 			case Match.RPS.Scissors:
 				return scissors;
+			default:
+				return null;
 		}
-		return null;
 	}
 }
