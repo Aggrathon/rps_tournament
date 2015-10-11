@@ -110,14 +110,22 @@ public class Tournament : MonoBehaviour {
 
     void RepositionCells()
     {
-        var next_y = -30 + ladder.Count / 2 * 64;
+        var nextY = -30 + ladder.Count / 2 * 64;
         for (var i = 1; i <= ladder.Count; i++)
         {
             var p = ladder[i - 1];
             p.transform.GetComponentsInChildren<Text>()[1].text = i.ToString();
-            p.transform.position = new Vector3(0, next_y, 0);
-
-            next_y -= 64;
+            if (p.transform.position.y > nextY + 1)
+            {
+                p.transform.DOMove(new Vector3(0, nextY, 0), tweenTime)
+                .OnComplete(() => p.transform.DOPunchPosition(Vector3.up * 20, tweenTime));
+            }
+            else if (p.transform.position.y < nextY - 1)
+            {
+                p.transform.DOMove(new Vector3(0, nextY, 0), tweenTime)
+                .OnComplete(() => p.transform.DOPunchPosition(Vector3.down * 20, tweenTime));
+            }          
+            nextY -= 64;
         }
     }
 
