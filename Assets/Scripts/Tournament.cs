@@ -16,14 +16,19 @@ public class Tournament : MonoBehaviour {
     private GameObject canvas;
     private List<Participant> participants;
     private List<GameObject> ladder;
-    //private List<ARPSPlayer> players;
+	[SerializeField]
+    private List<ARPSPlayer> players;
     private int nextTurn;
     private bool waiting;
 
 	// Use this for initialization
 	void Start () {
         canvas = GameObject.Find("TournamentCanvas");
-        TournamentState.instance.Competitors = CreateScriptableObjects(16);
+		//Set the human player to have the name saved in TournamentState
+		players.Find((ARPSPlayer p) => { return p.GetType() == typeof(HumanPlayer); }).name = TournamentState.instance.PlayerName;
+		//Sort the players by difficulty
+		players.Sort((ARPSPlayer p1, ARPSPlayer p2) => { return p2.difficulty - p1.difficulty; });
+		TournamentState.instance.Competitors = players;
         ladder = CreateLadder(TournamentState.instance.Competitors);
         participants = ladder.Select(x => x.GetComponent<Participant>()).Reverse().ToList();
         nextTurn = 0;
@@ -45,6 +50,7 @@ public class Tournament : MonoBehaviour {
         }
 	}
 
+	//Not needed / only for testing
     List<ARPSPlayer> CreateScriptableObjects(int amount)
     {
         var list = new List<ARPSPlayer>();
