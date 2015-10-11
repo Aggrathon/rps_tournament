@@ -54,7 +54,7 @@ public class Tournament : MonoBehaviour {
             list[i].name = "RandomAI " + (i + 1).ToString();
         }
         list.Add(ScriptableObject.CreateInstance<HumanPlayer>());
-        list[amount - 1].name = "Player";
+        //list[amount - 1].name = "Player";
         return list;
     }
 

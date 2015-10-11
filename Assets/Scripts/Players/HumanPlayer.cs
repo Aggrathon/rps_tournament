@@ -10,7 +10,7 @@ public class HumanPlayer : ARPSPlayer
 	public HumanPlayer()
 	{
 		name = "Human Player";
-		health = 5;
+		health = 3;
 		catchPhrase = "";
 		winPhrase = "";
 		loosePhrase = "";
@@ -20,7 +20,7 @@ public class HumanPlayer : ARPSPlayer
 	{
 		this.name = name;
 		this.look = look;
-		health = 5;
+		health = 3;
 		catchPhrase = "";
 		winPhrase = "";
 		loosePhrase = "";

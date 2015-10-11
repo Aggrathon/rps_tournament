@@ -12,7 +12,7 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 	public string catchPhrase;
 	public string winPhrase;
 	public string loosePhrase;
-	[SerializeField] private int Health = 5;
+	[SerializeField] private int Health = 3;
 	[Range(0, 100)]
 	public int difficulty = 50;
 
