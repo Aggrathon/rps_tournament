@@ -16,19 +16,32 @@ public class Tournament : MonoBehaviour {
     private GameObject canvas;
     private List<Participant> participants;
     private List<GameObject> ladder;
-	[SerializeField]
-    private List<ARPSPlayer> players;
     private int nextTurn;
     private bool waiting;
+
+	[Header("Players")]
+	public List<ARPSPlayer> aiPlayers;
+	[Tooltip("Leave empty for testing the tournament without input")]
+	public HumanPlayer humanPlayer;
+
+	//For handling matches async
+	private bool asyncMatchEnd = false;
+	private int asyncChallenger;
+	private int asyncChallengee;
 
 	// Use this for initialization
 	void Start () {
         canvas = GameObject.Find("TournamentCanvas");
-		//Set the human player to have the name saved in TournamentState
-		players.Find((ARPSPlayer p) => { return p.GetType() == typeof(HumanPlayer); }).name = TournamentState.instance.PlayerName;
-		//Sort the players by difficulty
-		players.Sort((ARPSPlayer p1, ARPSPlayer p2) => { return p2.difficulty - p1.difficulty; });
-		TournamentState.instance.Competitors = players;
+
+		//Prepare the list of players
+		aiPlayers.Sort((ARPSPlayer p1, ARPSPlayer p2) => { return p2.difficulty - p1.difficulty; }); //Sort the players by difficulty
+		TournamentState.instance.Competitors = aiPlayers;
+		if (humanPlayer != null)
+		{
+			humanPlayer.name = TournamentState.instance.PlayerName; //Set the human player to have the name saved in TournamentState
+			TournamentState.instance.Competitors.Add(humanPlayer);
+		}
+
         ladder = CreateLadder(TournamentState.instance.Competitors);
         participants = ladder.Select(x => x.GetComponent<Participant>()).Reverse().ToList();
         nextTurn = 0;
@@ -44,10 +57,14 @@ public class Tournament : MonoBehaviour {
             var ordered = ladder.Select(x => x.GetComponent<Participant>()).ToList();
             participants[nextTurn].challengeOne(ordered, 
                 (int challengeePos) => {
-                    SetupMatch(challengerPos, challengeePos);
+					SetupMatch(challengerPos, challengeePos);
                 }
             );
-        }
+        } else if(asyncMatchEnd)
+		{
+			asyncMatchEnd = false;
+			EndMatch(asyncChallenger, asyncChallengee);
+		}
 	}
 
 	//Not needed / only for testing
@@ -70,20 +87,25 @@ public class Tournament : MonoBehaviour {
         {
             IncrementTurn();
             waiting = false;
-            return;
         }
-        var chrAvatar = ladder[challenger].GetComponent<Participant>().avatar;
-        var cheeAvatar = ladder[challengee].GetComponent<Participant>().avatar;
-        ladder[challenger].transform.DOScale(1.2f, tweenTime);
-        ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() => {
-            new Match(chrAvatar, cheeAvatar, (Match match) =>
-            {               
-                EndMatch(challenger, challengee, match);
-            });
-        });
+		else
+		{
+			var chrAvatar = ladder[challenger].GetComponent<Participant>().avatar;
+			var cheeAvatar = ladder[challengee].GetComponent<Participant>().avatar;
+			ladder[challenger].transform.DOScale(1.2f, tweenTime);
+			ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() => {
+				new Match(chrAvatar, cheeAvatar, (Match match) =>
+				{
+					TournamentState.instance.Matches.Add(match);
+					asyncMatchEnd = true;
+					asyncChallenger = challenger;
+					asyncChallengee = challengee;
+				});
+			});
+		}
     }
 
-    void EndMatch(int challenger, int challengee, Match match)
+    void EndMatch(int challenger, int challengee)
     {
         ladder[challenger].transform.DOScale(1f, tweenTime);
         ladder[challengee].transform.DOScale(1f, tweenTime).OnComplete(() =>
@@ -91,9 +113,8 @@ public class Tournament : MonoBehaviour {
             waiting = false;
         });
 
-        TournamentState.instance.Matches.Add(match);
-
-        if (match.playerOneHealth > match.playerTwoHealth)
+		Match m = TournamentState.instance.Matches.Last();
+        if (m.getLastWinner() == m.playerOne)
         {
             HandleChallengerVictory(challenger, challengee);
         }
