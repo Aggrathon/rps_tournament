@@ -15,6 +15,8 @@ public class TournamentState {
         set;
     }
 
+	public string PlayerName = "Player";
+
     public static TournamentState instance = new TournamentState();
 
     private TournamentState()

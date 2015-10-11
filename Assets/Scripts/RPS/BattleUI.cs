@@ -105,6 +105,7 @@ public class BattleUI : MonoBehaviour {
 
 		//Animate open
 		battleScreen.gameObject.SetActive(true);
+		battleScreen.GetComponent<Animator>().SetTrigger("Show");
 	}
 
 

@@ -168,6 +168,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 155520, guid: 5e7438f34b69edb4fa4e1ca2e034381b, type: 2}
   tweenTime: .25
+  aiPlayers:
+  - {fileID: 11400000, guid: a7ecccaa2763e7f4aa78c923a9c06a48, type: 2}
+  - {fileID: 11400000, guid: c1ab3ad2fc755bf40bf1cb9f2d0f5910, type: 2}
+  - {fileID: 11400000, guid: b26ff42438f3f9442a92f3e5c3580224, type: 2}
+  - {fileID: 11400000, guid: c10abbbabd0173743913bb4854334463, type: 2}
+  - {fileID: 11400000, guid: 824a26dbf25c8fe4db27d9b4cfcdd152, type: 2}
+  - {fileID: 11400000, guid: c55bb78d4a951594b9c60f0fdedc70a0, type: 2}
+  humanPlayer: {fileID: 11400000, guid: d530e9eb972f77f49adc17a2415d03c6, type: 2}
 --- !u!4 &1401877897
 Transform:
   m_ObjectHideFlags: 0

@@ -1,11 +1,26 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.Collections;
 
 public class BattleUITester : MonoBehaviour {
 
 	public HumanPlayer humanPlayer;
 	public ARPSPlayer aiPlayer;
-	
+
+	public bool startMatchOnPlay = false;
+
+	public void Battle()
+	{
+		new Match(humanPlayer, aiPlayer, (Match match) => { });
+	}
+
+	void Start()
+	{
+		if(startMatchOnPlay && Application.loadedLevelName.Equals("battle"))
+		{
+			Battle();
+		}
+	}
 }
 
 [InitializeOnLoad]
@@ -19,12 +34,16 @@ public class BUITInspector : Editor
 		GUILayout.Space(10);
 		if (GUILayout.Button("Run Test Match"))
 		{
-			if(EditorApplication.isPlaying == false)
+			if (EditorApplication.isPlaying == false)
 			{
-				EditorApplication.isPlaying = true;
+                EditorApplication.isPlaying = true;
+				(this.target as BattleUITester).startMatchOnPlay = true;
 			}
-			BattleUITester curr = (this.target as BattleUITester);
-			new Match(curr.humanPlayer, curr.aiPlayer, (Match match)=> { });
+			else
+			{
+				(this.target as BattleUITester).Battle();
+			}
 		}
 	}
 }
+

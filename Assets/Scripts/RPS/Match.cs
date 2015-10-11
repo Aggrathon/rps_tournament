@@ -130,9 +130,9 @@ public class Match {
 		player2HasPlayed = false;
 
 		next del = player1.newRound;
-		del();
+		del.BeginInvoke(null, null);
 		del = player2.newRound;
-		del();
+		del.BeginInvoke(null, null);
 	}
 
 	/// <summary>
@@ -250,7 +250,7 @@ public class Match {
 			if (player2HasFinished)
 			{
 				matchHasEnded = true;
-				callback(this);
+				callback.BeginInvoke(this, null, null);
 			}
 		}
 		else if (player == player2)
@@ -259,7 +259,7 @@ public class Match {
 			if (player1HasFinished)
 			{
 				matchHasEnded = true;
-				callback(this);
+				callback.BeginInvoke(this, null, null);
 			}
 		}
 	}
