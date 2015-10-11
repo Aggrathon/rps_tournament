@@ -14,7 +14,6 @@ public class Tournament : MonoBehaviour {
     public GameObject cell;
     public float tweenTime;
     private GameObject canvas;
-    private List<ARPSPlayer> competitors;
     private List<Participant> participants;
     private List<GameObject> ladder;
     //private List<ARPSPlayer> players;
@@ -23,13 +22,13 @@ public class Tournament : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        canvas = GameObject.Find("Canvas");
+        canvas = GameObject.Find("TournamentCanvas");
         TournamentState.instance.Competitors = CreateScriptableObjects(16);
-        competitors = TournamentState.instance.Competitors;
-        ladder = CreateLadder(competitors);
+        ladder = CreateLadder(TournamentState.instance.Competitors);
         participants = ladder.Select(x => x.GetComponent<Participant>()).Reverse().ToList();
         nextTurn = 0;
         waiting = false;
+        Application.LoadLevelAdditive("battle");
 	}
 	
 	// Update is called once per frame
@@ -49,11 +48,13 @@ public class Tournament : MonoBehaviour {
     List<ARPSPlayer> CreateScriptableObjects(int amount)
     {
         var list = new List<ARPSPlayer>();
-        for (var i = 0; i < amount; i++)
+        for (var i = 0; i < amount - 1; i++)
         {
             list.Add(ScriptableObject.CreateInstance<RandomAI>());
             list[i].name = "RandomAI " + (i + 1).ToString();
         }
+        list.Add(ScriptableObject.CreateInstance<HumanPlayer>());
+        list[amount - 1].name = "Player";
         return list;
     }
 
@@ -65,32 +66,15 @@ public class Tournament : MonoBehaviour {
             waiting = false;
             return;
         }
-
+        var chrAvatar = ladder[challenger].GetComponent<Participant>().avatar;
+        var cheeAvatar = ladder[challengee].GetComponent<Participant>().avatar;
         ladder[challenger].transform.DOScale(1.2f, tweenTime);
-        ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() =>
-        {     
-            //ACTUAL BATTLE STUFF GOES HERE, ASYNC FUNCTION WHOSE CALLBACK CALLS EndMatch
-            var challengerWon = Random.value < 0.5 ? true : false;
-            EndMatch(challenger, challengee, challengerWon);
+        ladder[challengee].transform.DOScale(1.2f, tweenTime).OnComplete(() => {
+            new Match(chrAvatar, cheeAvatar, (Match match) =>
+            {               
+                EndMatch(challenger, challengee, match);
+            });
         });
-    }
-
-    void EndMatch(int challenger, int challengee, bool challengerWon)
-    {
-        ladder[challenger].transform.DOScale(1f, tweenTime);
-        ladder[challengee].transform.DOScale(1f, tweenTime).OnComplete(() =>
-        {
-            waiting = false;
-        });
-
-        if (challengerWon)
-        {
-            HandleChallengerVictory(challenger, challengee);
-        }
-        else
-        {
-            IncrementTurn();
-        }
     }
 
     void EndMatch(int challenger, int challengee, Match match)
@@ -153,6 +137,7 @@ public class Tournament : MonoBehaviour {
             obj.transform.GetComponentsInChildren<Text>()[0].text = players[i].name;
             obj.transform.GetComponentsInChildren<Text>()[1].text = (i + 1).ToString();
             obj.transform.position = new Vector3(0, next_y, 0);
+            obj.transform.GetComponent<Participant>().avatar = players[i];
             list.Add(obj);
 
             next_y -= 64;

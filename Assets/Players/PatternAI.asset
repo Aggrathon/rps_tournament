@@ -16,6 +16,7 @@ MonoBehaviour:
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
-  maxHealth: 5
+  Health: 3
+  difficulty: 50
   pattern: 00000000010000000200000001000000000000000200000002000000000000000100000000000000
   resetEachMatch: 0

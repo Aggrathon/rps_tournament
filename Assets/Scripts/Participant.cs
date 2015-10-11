@@ -4,6 +4,7 @@ using System;
 
 public class Participant : MonoBehaviour {
 
+    public ARPSPlayer avatar;
 	// Use this for initialization
 	void Start () {
 	

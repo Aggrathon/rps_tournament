@@ -16,6 +16,6 @@ MonoBehaviour:
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
-  maxHealth: 5
+  Health: 3
   difficulty: 10
   constantChoice: 1
