@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: ConstantAI scissors
   m_EditorClassIdentifier: 
   name: ConstantAI scissors
-  look: {fileID: 0}
+  look: {fileID: 21300012, guid: 88cfbb7d404449c4ebb56ef4bff69eec, type: 3}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
