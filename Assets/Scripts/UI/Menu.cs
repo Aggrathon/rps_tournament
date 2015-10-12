@@ -16,6 +16,13 @@ public class Menu : MonoBehaviour {
 		fader.color = c;
 		fader.gameObject.SetActive(true);
 		float time = 0f;
+		if(playerName != null) //This is a temp fix for a bug in Unity 5.2
+		{
+			yield return null;
+			Transform caretGO = playerName.transform.FindChild(playerName.transform.name + " Input Caret");
+			(caretGO as RectTransform).pivot = new Vector2(0.5f, 0.3f);
+			caretGO.GetComponent<CanvasRenderer>().SetMaterial(Graphic.defaultGraphicMaterial, Texture2D.whiteTexture);
+		}
 		while(time< fadeInTime)
 		{
 			yield return new WaitForEndOfFrame();
