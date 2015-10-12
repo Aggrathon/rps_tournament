@@ -1041,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &277989615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7068,7 +7068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1832943586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7081,7 +7081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanPlayer: {fileID: 11400000, guid: d530e9eb972f77f49adc17a2415d03c6, type: 2}
-  aiPlayer: {fileID: 11400000, guid: c10abbbabd0173743913bb4854334463, type: 2}
+  aiPlayer: {fileID: 11400000, guid: 8540c18a5f4d104468f8714263e079d7, type: 2}
   startMatchOnPlay: 1
 --- !u!114 &1832943587
 MonoBehaviour:
@@ -7895,7 +7895,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1994416036
 AudioListener:
   m_ObjectHideFlags: 0

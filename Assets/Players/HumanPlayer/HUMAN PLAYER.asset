@@ -16,5 +16,5 @@ MonoBehaviour:
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
-  Health: 3
+  Health: 5
   difficulty: 0

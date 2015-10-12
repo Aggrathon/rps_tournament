@@ -9,10 +9,10 @@ public abstract class ARPSPlayer : ScriptableObject, IRPSPlayer {
 	[Header("Player Attributes")]
 	new public string name;
 	public Sprite look;
-	public string catchPhrase;
-	public string winPhrase;
-	public string loosePhrase;
-	[SerializeField] private int Health = 3;
+	public string catchPhrase = "INSERT_TAUNT_HERE";
+	public string winPhrase = "INSERT_VICTORY_CELEBRATION";
+	public string loosePhrase = "INSERT_DEFEAT_QUOTE";
+	[SerializeField] private int Health = 5;
 	[Range(0, 100)]
 	public int difficulty = 50;
 
