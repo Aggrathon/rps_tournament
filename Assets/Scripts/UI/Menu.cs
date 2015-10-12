@@ -14,4 +14,14 @@ public class Menu : MonoBehaviour {
 		}
 		Application.LoadLevel("tournament");
 	}
+
+	public void OpenMenu()
+	{
+		Application.LoadLevel("menu");
+	}
+
+	public void QuitApplication()
+	{
+		Application.Quit();
+	}
 }
