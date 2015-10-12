@@ -533,6 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 155520, guid: 5e7438f34b69edb4fa4e1ca2e034381b, type: 2}
   tweenTime: .25
+  startDelay: 1.5
   aiPlayers:
   - {fileID: 11400000, guid: a7ecccaa2763e7f4aa78c923a9c06a48, type: 2}
   - {fileID: 11400000, guid: c1ab3ad2fc755bf40bf1cb9f2d0f5910, type: 2}

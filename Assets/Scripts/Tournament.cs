@@ -13,6 +13,9 @@ public class Tournament : MonoBehaviour {
 
     public GameObject cell;
     public float tweenTime;
+
+	public float startDelay = 1f;
+
     private GameObject canvas;
     private List<Participant> participants;
     private List<GameObject> ladder;
@@ -30,7 +33,7 @@ public class Tournament : MonoBehaviour {
 	private int asyncChallengee;
 
 	// Use this for initialization
-	void Start () {
+	IEnumerator Start () {
         canvas = GameObject.Find("TournamentCanvas");
 
 		//Prepare the list of players
@@ -45,8 +48,10 @@ public class Tournament : MonoBehaviour {
         ladder = CreateLadder(TournamentState.instance.Competitors);
         participants = ladder.Select(x => x.GetComponent<Participant>()).Reverse().ToList();
         nextTurn = 0;
-        waiting = false;
         Application.LoadLevelAdditive("battle");
+		waiting = true;
+		yield return new WaitForSeconds(startDelay);
+		waiting = false;
 	}
 	
 	// Update is called once per frame
