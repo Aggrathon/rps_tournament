@@ -535,6 +535,7 @@ MonoBehaviour:
   tweenTime: .25
   startDelay: 1.5
   aiPlayers:
+  - {fileID: 11400000, guid: c1ae78224fbe7c04a84ecd8a30a9ff71, type: 2}
   - {fileID: 11400000, guid: 2b3b316858b024a41b8715d974da8393, type: 2}
   - {fileID: 11400000, guid: 586de4f93d63d594d8c42b1b4a69d36c, type: 2}
   - {fileID: 11400000, guid: 6248074d787d9f64e9133a887e6a01b6, type: 2}
@@ -543,6 +544,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 895b550eb9f4cc24c8316d08b75d9f43, type: 2}
   - {fileID: 11400000, guid: cbfdd0736f6724046b4c006ee94081a0, type: 2}
   - {fileID: 11400000, guid: dcac28f9498e96e4eb2f631f872b1129, type: 2}
+  - {fileID: 11400000, guid: aa3634e5cadb7384a8fea764f39ff06f, type: 2}
+  - {fileID: 11400000, guid: 9c2bdcafabffa7b47b4b5858bb33cd7d, type: 2}
   humanPlayer: {fileID: 11400000, guid: d530e9eb972f77f49adc17a2415d03c6, type: 2}
 --- !u!4 &1401877897
 Transform:

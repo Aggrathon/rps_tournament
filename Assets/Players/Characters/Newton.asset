@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
+  m_Name: Newton
+  m_EditorClassIdentifier: 
+  name: Sir Isaac Newton
+  look: {fileID: 21300000, guid: 4c363ae6e370e10439b3d1fc19ac352c, type: 3}
+  catchPhrase: To every action there is always opposed an equal reaction
+  winPhrase: If I have seen further than others, it is by standing upon the shoulders
+    of giants
+  loosePhrase: What goes up must come down
+  Health: 3
+  difficulty: 60
+  pattern: 0000000001000000000000000100000001000000
+  resetEachMatch: 1
