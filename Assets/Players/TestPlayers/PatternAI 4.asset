@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
-  m_Name: PatternAI
+  m_Name: PatternAI 4
   m_EditorClassIdentifier: 
-  name: 
+  name: PatternAI 4
   look: {fileID: 0}
-  catchPhrase: INSERT_TAUNT_HERE
-  winPhrase: INSERT_VICTORY_CELEBRATION
-  loosePhrase: INSERT_DEFEAT_QUOTE
-  Health: 5
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
   difficulty: 50
-  pattern: 
-  resetEachMatch: 0
+  pattern: 00000000010000000000000002000000
+  resetEachMatch: 1
