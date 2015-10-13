@@ -82,7 +82,7 @@ public class BayesAI : ARPSPlayer {
         else relevant = startMove;
 
         var total = relevant[0] + relevant[1] + relevant[2];
-        var random = Random.value * total;
+        var random = new System.Random().NextDouble() * total;
 
         if (random <= relevant[0])
         {

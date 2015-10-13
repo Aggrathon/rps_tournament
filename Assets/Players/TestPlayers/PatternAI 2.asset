@@ -8,14 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acbba593c8fb8a343a2c210d7998627b, type: 3}
-  m_Name: FollowAI 0
+  m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
+  m_Name: PatternAI 2
   m_EditorClassIdentifier: 
-  name: Follow 0
+  name: PatternAI 2
   look: {fileID: 0}
-  catchPhrase: Same as your last
-  winPhrase: INSERT_VICTORY_CELEBRATION
-  loosePhrase: INSERT_DEFEAT_QUOTE
-  Health: 5
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
   difficulty: 50
-  followMode: 0
+  pattern: 020000000000000002000000
+  resetEachMatch: 1

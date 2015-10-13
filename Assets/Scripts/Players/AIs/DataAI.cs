@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class DataAI : ARPSPlayer {
 
@@ -33,7 +34,7 @@ public class DataAI : ARPSPlayer {
         var rocks = opponentHistory.Where(a => a == Match.RPS.Rock).Count();
         var papers = opponentHistory.Where(a => a == Match.RPS.Paper).Count();
         var total = scissors + papers + rocks;
-        var random = Random.value * total;
+        var random = new System.Random().NextDouble() * total;
 
         if (random <= scissors) { 
             setChoice(Match.RPS.Scissors); 
