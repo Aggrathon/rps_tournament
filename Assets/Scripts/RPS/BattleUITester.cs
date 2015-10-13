@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using System.Collections;
+#endif
 
 public class BattleUITester : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class BattleUITester : MonoBehaviour {
 	}
 }
 
+#if UNITY_EDITOR
 [InitializeOnLoad]
 [CustomEditor(typeof(BattleUITester))]
 public class BUITInspector : Editor
@@ -46,4 +48,5 @@ public class BUITInspector : Editor
 		}
 	}
 }
+#endif
 

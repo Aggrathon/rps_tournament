@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using UnityEngine;
 
 public class MatchAndPlayerTester : ScriptableObject {
@@ -6,7 +8,7 @@ public class MatchAndPlayerTester : ScriptableObject {
 }
 
 
-
+#if UNITY_EDITOR
 [InitializeOnLoad]
 [CustomEditor(typeof(MatchAndPlayerTester), true)]
 public class TestMatchInspector : Editor
@@ -59,3 +61,4 @@ public class TestMatchInspector : Editor
 		});
 	}
 }
+#endif
