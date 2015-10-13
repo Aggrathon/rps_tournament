@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
+  m_Name: Darwin
+  m_EditorClassIdentifier: 
+  name: Charles Darwin
+  look: {fileID: 21300000, guid: df8dbb0907b27f94f8d24b969417a338, type: 3}
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
+  difficulty: 50
+  pattern: 00000000010000000000000002000000
+  resetEachMatch: 1
