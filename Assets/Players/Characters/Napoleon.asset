@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "Napol\xE9on Bonaparte"
   look: {fileID: 21300000, guid: 50e1680c2270c944590dbbfe443ecda1, type: 3}
-  catchPhrase: Victory belongs to the most persevering.
+  catchPhrase: Victory belongs to the most persevering
   winPhrase: Never interrupt your enemy when he is making a mistake.
   loosePhrase: Death is nothing, but to live defeated and inglorious is to die daily.
   Health: 3

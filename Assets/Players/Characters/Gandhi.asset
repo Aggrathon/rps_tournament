@@ -18,4 +18,4 @@ MonoBehaviour:
   loosePhrase: 
   Health: 3
   difficulty: 16
-  followMode: 0
+  followMode: 2
