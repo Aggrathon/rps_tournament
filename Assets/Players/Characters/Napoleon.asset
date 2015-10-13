@@ -16,5 +16,5 @@ MonoBehaviour:
   catchPhrase: Victory belongs to the most persevering.
   winPhrase: Never interrupt your enemy when he is making a mistake.
   loosePhrase: Death is nothing, but to live defeated and inglorious is to die daily.
-  Health: 5
+  Health: 3
   difficulty: 80

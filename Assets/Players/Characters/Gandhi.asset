@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acbba593c8fb8a343a2c210d7998627b, type: 3}
-  m_Name: FollowAI
+  m_Name: Gandhi
   m_EditorClassIdentifier: 
-  name: 
-  look: {fileID: 0}
-  catchPhrase: INSERT_TAUNT_HERE
-  winPhrase: INSERT_VICTORY_CELEBRATION
-  loosePhrase: INSERT_DEFEAT_QUOTE
-  Health: 5
-  difficulty: 50
+  name: Mahatma Gandhi
+  look: {fileID: 21300000, guid: e874b115c00bdc346a06a8c3cadc83cf, type: 3}
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
+  difficulty: 16
   followMode: 0

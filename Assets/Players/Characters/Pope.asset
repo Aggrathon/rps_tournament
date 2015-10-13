@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1639cf3262df846ba73cf4d726a7b3, type: 3}
-  m_Name: ConstantAI
+  m_Name: Pope
   m_EditorClassIdentifier: 
-  name: 
-  look: {fileID: 0}
-  catchPhrase: INSERT_TAUNT_HERE
-  winPhrase: INSERT_VICTORY_CELEBRATION
-  loosePhrase: INSERT_DEFEAT_QUOTE
-  Health: 5
-  difficulty: 50
-  constantChoice: 0
+  name: The Pope
+  look: {fileID: 21300000, guid: dbfdb654ddaec8b4cbe6ebd88fb7c898, type: 3}
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
+  difficulty: 11
+  constantChoice: 1

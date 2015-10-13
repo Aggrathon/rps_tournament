@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d1639cf3262df846ba73cf4d726a7b3, type: 3}
-  m_Name: Elvis
+  m_Name: Pare
   m_EditorClassIdentifier: 
-  name: Elvis Presley
-  look: {fileID: 21300000, guid: ace08d81a576e174a9ab59b2bf18e166, type: 3}
+  name: "Ambroise Par\xE9"
+  look: {fileID: 21300000, guid: 24255808a7df327499d10bfee8b1d024, type: 3}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
   Health: 3
-  difficulty: 0
-  constantChoice: 0
+  difficulty: 12
+  constantChoice: 2
