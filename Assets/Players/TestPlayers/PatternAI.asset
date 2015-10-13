@@ -11,12 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
   m_Name: PatternAI
   m_EditorClassIdentifier: 
-  name: PatternAI
-  look: {fileID: 21300000, guid: 6edcfd24904b3b149b57f13411120d44, type: 3}
+  name: PatternAI 0
+  look: {fileID: 0}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
   Health: 3
   difficulty: 50
-  pattern: 00000000010000000200000001000000000000000200000002000000000000000100000000000000
-  resetEachMatch: 0
+  pattern: 000000000100000002000000
+  resetEachMatch: 1

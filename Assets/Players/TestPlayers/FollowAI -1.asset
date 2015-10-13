@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Follow -1
   look: {fileID: 0}
-  catchPhrase: Looses against your last
-  winPhrase: INSERT_VICTORY_CELEBRATION
-  loosePhrase: INSERT_DEFEAT_QUOTE
-  Health: 5
+  catchPhrase: 
+  winPhrase: 
+  loosePhrase: 
+  Health: 3
   difficulty: 50
   followMode: 2

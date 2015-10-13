@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f572c1e6540cba4099fba6d612c9d68, type: 3}
   m_Name: HUMAN PLAYER
   m_EditorClassIdentifier: 
-  name: Human Player
+  name: Player
   look: {fileID: 21300000, guid: f3befd505b966fc4fbef3c3159cb07c7, type: 3}
   catchPhrase: 
   winPhrase: 
   loosePhrase: 
-  Health: 5
+  Health: 3
   difficulty: 0

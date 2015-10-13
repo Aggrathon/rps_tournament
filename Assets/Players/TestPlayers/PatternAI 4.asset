@@ -8,13 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfdf215b2fe644f46ac4f38bf0e2f149, type: 3}
-  m_Name: RandomAI 2
+  m_Script: {fileID: 11500000, guid: 6da7e1d8ffaafc74ab7a511d2b7eda08, type: 3}
+  m_Name: PatternAI
   m_EditorClassIdentifier: 
-  name: RandomAI
+  name: 
   look: {fileID: 0}
-  catchPhrase: 
-  winPhrase: 
-  loosePhrase: 
-  Health: 3
+  catchPhrase: INSERT_TAUNT_HERE
+  winPhrase: INSERT_VICTORY_CELEBRATION
+  loosePhrase: INSERT_DEFEAT_QUOTE
+  Health: 5
   difficulty: 50
+  pattern: 
+  resetEachMatch: 0
